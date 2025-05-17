@@ -37,7 +37,10 @@ class _AtcState extends State<Atc> {
       backgroundColor: Colors.orange,
       appBar: AppBar(
         backgroundColor: Colors.deepPurpleAccent,
-        title: const Text('The counter app'),
+        title: const Text(
+          'The counter app',
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -49,7 +52,8 @@ class _AtcState extends State<Atc> {
                 '$counter',
                 style: const TextStyle(
                   color: Colors.white,
-                  fontSize: 20,
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ],
