@@ -1,73 +1,50 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(BMICalculatorUI());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+class BMICalculatorUI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Atc(),
-    );
-  }
-}
-
-class Atc extends StatefulWidget {
-  const Atc({super.key});
-
-  @override
-  State<Atc> createState() => _AtcState();
-}
-
-class _AtcState extends State<Atc> {
-  int counter = 0;
-
-  void incrimentcounter() {
-    setState(() {
-      counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.orange,
-      appBar: AppBar(
-        backgroundColor: Colors.deepPurpleAccent,
-        title: const Text(
-          'The counter app',
-          style: TextStyle(color: Colors.white),
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('BMI Calculator'),
+          centerTitle: true,
         ),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
             children: [
-              Text(
-                '$counter',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
+              TextField(
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  labelText: 'Height (cm)',
+                  border: OutlineInputBorder(),
                 ),
               ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              FloatingActionButton(
-                onPressed: incrimentcounter,
-                child: Icon(Icons.add),
+              SizedBox(height: 16),
+              TextField(
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  labelText: 'Weight (kg)',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 24),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('Calculate BMI'),
+              ),
+              SizedBox(height: 24),
+              Text(
+                'Your BMI will appear here',
+                style: TextStyle(fontSize: 18, color: Colors.grey),
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }
