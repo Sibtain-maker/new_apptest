@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:new_project/Resultscreen.dart';
 
 void main() {
   runApp(const MYApp());
@@ -81,7 +82,6 @@ class _BmiCalculatorState extends State<BmiCalculator> {
         child: Column(
           children: [
             const SizedBox(height: 50),
-            // Gender selection row
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -304,12 +304,38 @@ class _BmiCalculatorState extends State<BmiCalculator> {
               width: 350,
               height: 50,
               color: const Color(0xFFEB1555),
-              child: const Center(
-                child: Text(
-                  'CALCULATE',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
+              child: GestureDetector(
+                onTap: () {
+                  if (_sliderValue > 0 && weight > 0) {
+                    double heightInMeters = _sliderValue / 100;
+                    double bmi = weight / (heightInMeters * heightInMeters);
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ResultScreen(bmi: bmi),
+                      ),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Please enter valid height and weight'),
+                      ),
+                    );
+                  }
+                },
+                child: Container(
+                  width: 350,
+                  height: 50,
+                  color: const Color(0xFFEB1555),
+                  child: const Center(
+                    child: Text(
+                      'CALCULATE',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
+                    ),
                   ),
                 ),
               ),
